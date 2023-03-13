@@ -23,7 +23,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         field: 'user_id',
         references: {
-          model: 'user',
+          model: 'users',
           key: 'id',
         },
       },

@@ -1,5 +1,5 @@
 const blogPostModel = async (sequelize, DataTypes) => {
-  const BlogPost = sequelize.define('blogPost', {
+  const BlogPost = sequelize.define('BlogPost', {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     published: DataTypes.DATE,
@@ -12,7 +12,7 @@ const blogPostModel = async (sequelize, DataTypes) => {
   }
   );
   BlogPost.associate = (models) => {
-    BlogPost.belongsTo(models.User, {
+    BlogPost.belongsTo(models.Users, {
       foreignKey: 'user_id',
       as: 'user',
     }); 
