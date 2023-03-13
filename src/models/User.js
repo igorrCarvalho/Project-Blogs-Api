@@ -1,5 +1,10 @@
-const UserModel = (sequelize, DataTypes) => {
+"use strict";
+
+const { Model } = require('sequelize');
+
+module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define('User', {
+    id: DataTypes.INTEGER,
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
@@ -17,9 +22,4 @@ const UserModel = (sequelize, DataTypes) => {
     });
   }
   return Users;
-};
-
-
-module.exports = {
-  UserModel,
 };
