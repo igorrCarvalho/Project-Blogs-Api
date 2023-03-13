@@ -13,9 +13,7 @@ app.use(express.json());
 
 // ...
 
-app.get('/', async (req, res) => {
-  console.log('s')
-});
+app.get('/');
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
