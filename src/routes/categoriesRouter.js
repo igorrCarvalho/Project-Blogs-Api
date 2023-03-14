@@ -1,5 +1,5 @@
 const express = require('express');
-const { createNewCategory, showCategoryById } = require('../controllers/category.controllers');
+const { createNewCategory, showCategoryById } = require('../controllers/category.controller');
 const { validateToken } = require('../middlewares/validateToken');
 
 const categoriesRouter = express.Router();

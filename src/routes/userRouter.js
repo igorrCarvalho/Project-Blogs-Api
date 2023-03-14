@@ -1,5 +1,5 @@
 const express = require('express');
-const { createNewUser, showAllUsers, showUserById } = require('../controllers/usersControllers');
+const { createNewUser, showAllUsers, showUserById } = require('../controllers/usersController');
 const { validateToken } = require('../middlewares/validateToken');
 
 const userRouter = express.Router();
