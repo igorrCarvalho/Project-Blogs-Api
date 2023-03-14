@@ -1,8 +1,8 @@
-const User = require('../models');
+const { userModel } = require('../models/User');
 
-const getAllUsers = async () => User.findAll({ attributes: { exclude: ['password'] } });
+const getAllUsers = async () => userModel().findAll({ attributes: { exclude: ['password'] } });
 
-const supplyUserByEmail = async (email) => User.findOne({ where: { email } });
+const supplyUserByEmail = async (email) => userModel().findOne({ where: { email } });
 
 const createUser = async (data) => {
   const { displayName, email, password, image } = data;
@@ -26,12 +26,12 @@ const createUser = async (data) => {
     return { type: 409, message: 'User already registered' };
   }
 
-  const createSuccess = await User.create(displayName, email, password, image);
+  const createSuccess = await userModel.create(displayName, email, password, image);
   return { type: false, message: createSuccess };
 };
 
 const getUserById = async (id) => {
-  const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
+  const user = await userModel().findByPk(id, { attributes: { exclude: ['password'] } });
   if (!user) return { type: 404, message: 'User does not exist' };
   return { type: false, message: user };
 };
