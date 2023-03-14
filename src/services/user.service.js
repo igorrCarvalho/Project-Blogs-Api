@@ -1,5 +1,7 @@
 const User = require('../models');
 
+const getAllUsers = async () => User.findAll({ attributes: { exclude: ['password'] } });
+
 const supplyUserByEmail = async (email) => User.findOne({ where: { email } });
 
 const createUser = async (data) => {
@@ -28,7 +30,15 @@ const createUser = async (data) => {
   return { type: false, message: createSuccess };
 };
 
+const getUserById = async (id) => {
+  const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
+  if (!user) return { type: 404, message: 'User does not exist' };
+  return { type: false, message: user };
+};
+
 module.exports = {
   supplyUserByEmail,
   createUser,
+  getAllUsers,
+  getUserById,
 };
