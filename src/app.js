@@ -3,6 +3,7 @@ const { login } = require('./controllers/usersControllers');
 const { validateUserEntries } = require('./middlewares/validateUserEntries');
 
 const loginRouter = require('./routes/loginRouter');
+const userRouter = require('./routes/userRouter');
 
 // ...
 
@@ -16,6 +17,8 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 app.use('/login', loginRouter);
+
+app.use('/user', userRouter);
 
 // ...
 
