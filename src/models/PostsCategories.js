@@ -1,4 +1,6 @@
-const PostCategoryModel = async (sequelize, DataTypes) => {
+'use strict';
+
+module.exports = (sequelize, DataTypes) => {
   const PostCategory = sequelize.define('PostCategory', {}, {
     timestamps: false,
     underscored: true,
@@ -18,10 +20,6 @@ const PostCategoryModel = async (sequelize, DataTypes) => {
       otherKey: 'category_id',
     });
   };
-
+  
   return PostCategory;
-};
-
-module.exports = {
-  PostCategoryModel,
 };

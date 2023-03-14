@@ -1,10 +1,14 @@
 const { generateToken } = require('../token/token');
-const User = require('../models/User');
-const { createUser, getAllUsers, getUserById } = require('../services/user.service');
+const {
+  createUser,
+  getAllUsers,
+  getUserById,
+  supplyUserByEmail,
+} = require('../services/user.service');
 
 const login = async (req, res) => {
   const { email } = req.body;
-  const user = await User.findOne({ where: { email } });
+  const user = await supplyUserByEmail(email);
   const { password, ...otherData } = user.dataValues;
   const newToken = generateToken(otherData);
   res.status(200).json({ token: newToken });

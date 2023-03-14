@@ -1,10 +1,17 @@
-const blogPostModel = async (sequelize, DataTypes) => {
+'use strict';
+
+module.exports = (sequelize, DataTypes) => {
   const BlogPost = sequelize.define('BlogPost', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     published: DataTypes.DATE,
     updated: DataTypes.DATE,
-    user_id: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
   },
   {
     timestamps: false,
@@ -17,10 +24,6 @@ const blogPostModel = async (sequelize, DataTypes) => {
       as: 'user',
     }); 
   };
-
+  
   return BlogPost;
-};
-
-module.exports = {
-  blogPostModel,
 };
