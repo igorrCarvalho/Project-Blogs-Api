@@ -5,7 +5,7 @@ const getAllPosts = async () => {
     include: [
       {
         model: Category,
-        as: 'categorias',
+        as: 'categories',
         through: { attributes: [] },
       },
       {
