@@ -4,8 +4,7 @@ const getAllUsers = async () => User.findAll({ attributes: { exclude: ['password
 
 const supplyUserByEmail = async (email) => User.findOne({ where: { email } });
 
-const createUser = async (data) => {
-  const { displayName, email, password, image } = data;
+const createUser = async (displayName, email, password, image) => {
   if (displayName.length < 8) {
     return { type: 400, message: '"displayName" length must be at least 8 characters long' };
   }
@@ -26,7 +25,7 @@ const createUser = async (data) => {
     return { type: 409, message: 'User already registered' };
   }
 
-  const createSuccess = await User.create(displayName, email, password, image);
+  const createSuccess = await User.create({ displayName, email, password, image });
   return { type: false, message: createSuccess };
 };
 
